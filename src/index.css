@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.product-card {
+    @apply bg-yellow-300 rounded-xl p-5;
+}
+
+.product-title {
+    @apply font-semibold text-center text-base pb-3 mr-3 ml-3;
+}
+
+.product-price {
+    @apply text-center text-xl font-bold;
+}
+
+.menu-bar {
+    @apply bg-gray-800 h-16 z-10 pl-14 pr-14 pt-5 fixed top-0 left-0 right-0 columns-2;
+}
+
+.car-button {
+    @apply bg-yellow-500 text-white absolute top-0 right-0 cursor-pointer p-5 font-light;
+}
+
+.app-title {
+    @apply text-yellow-500 font-bold;
+}

@@ -1,16 +1,14 @@
 import { ProductProps } from '../interface';
 
 const Card = ({ id, title, price }: ProductProps) => (
-  <div className="bg-zinc-300 rounded-xl p-5">
+  <div className="product-card">
     <img
       src={'/product.png'}
       alt={`Product ${id}`}
       className="object-contain mx-auto pb-6 drop-shadow-md"
     />
-    <p className="font-semibold text-center text-base pb-3 mr-3 ml-3">
-      {title}
-    </p>
-    <p className="text-center text-xl font-bold">
+    <p className="product-title">{title}</p>
+    <p className="product-price">
       <span className="text-red-800">$ </span>
       {price}
     </p>

@@ -1,9 +1,10 @@
 import './App.css';
-import { Products } from './components';
+import { Products, MenuBar } from './components';
 
 function App() {
   return (
     <div>
+      <MenuBar />
       <Products />
     </div>
   );
