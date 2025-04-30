@@ -4,3 +4,10 @@ export interface ProductProps {
     price: number;
 }
 
+export interface CartItemsProps {
+    id: number;
+    title: string;
+    price: number;
+    quantity: number;
+}
+

@@ -1,15 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import { BrowserRouter, Route, Routes } from 'react-router';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import './index.css';
+import { MenuBar, ShoppingCart } from './components';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <MenuBar />
+      <div className="main-content">
+        <Routes>
+          <Route path="/" element={<App />}></Route>
+          <Route path="/car" element={<ShoppingCart />}></Route>
+        </Routes>
+      </div>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

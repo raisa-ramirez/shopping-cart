@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+.main-content {
+    @apply pt-24 pl-14 pr-14;
+}
+
 .product-card {
-    @apply bg-yellow-300 rounded-xl p-5;
+    @apply bg-yellow-300 rounded-xl border-yellow-700 border-2 hover:bg-yellow-400;
 }
 
 .product-title {
@@ -14,14 +18,50 @@
     @apply text-center text-xl font-bold;
 }
 
+.product-image {
+    @apply rounded-t-xl;
+}
+
+.product-button {
+    @apply bg-gray-800 text-white h-14 rounded-b-xl text-center p-4 mt-4 cursor-pointer hover:bg-gray-900;
+}
+
 .menu-bar {
     @apply bg-gray-800 h-16 z-10 pl-14 pr-14 pt-5 fixed top-0 left-0 right-0 columns-2;
 }
 
-.car-button {
-    @apply bg-yellow-500 text-white absolute top-0 right-0 cursor-pointer p-5 font-light;
+.cart-button {
+    @apply bg-yellow-500 hover:bg-yellow-400 text-white absolute top-0 right-0 cursor-pointer p-5 font-light;
 }
 
 .app-title {
-    @apply text-yellow-500 font-bold;
+    @apply text-yellow-500 font-bold hover:text-yellow-400;
+}
+
+.cart-items {
+    @apply border-2 border-yellow-700 pt-4 pb-4 pr-4 pl-4 rounded-2xl;
+}
+
+.cart-title {
+    @apply text-blue-950 text-lg pl-4 pr-4 pt-4;
+}
+
+.cart-subtitle {
+    @apply text-gray-400 text-sm pl-4 pr-4;
+}
+
+.cart-image {
+    @apply object-contain h-32;
+}
+
+.cart-price {
+    @apply text-2xl text-center p-4 h-2/4;
+}
+
+.cart-delete{
+    @apply bg-red-600 h-2/4 p-5 rounded-2xl text-base text-center text-white cursor-pointer hover:bg-red-700 drop-shadow-md;
+}
+
+.cart-page {
+    @apply pb-5 text-2xl font-medium text-black;
 }

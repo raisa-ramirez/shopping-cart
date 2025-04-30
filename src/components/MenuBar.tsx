@@ -1,8 +1,14 @@
+import { Link } from 'react-router';
+
 const MenuBar = () => (
   <div className="menu-bar">
-    <div className="app-title">eStore</div>
+    <Link to="/" className="app-title">
+      eStore
+    </Link>
     <div className="menu">
-      <div className="car-button">My Cart</div>
+      <Link to="/car" className="cart-button">
+        My Cart
+      </Link>
     </div>
   </div>
 );
