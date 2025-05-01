@@ -1,51 +1,43 @@
+import { useDispatch, useSelector } from 'react-redux';
 import CarItem from './CartItem';
+import { CartItemsProps } from '../interface';
+import { removeItem } from '../redux/cartSlice';
+
 const ShoppingCart = () => {
-  const cartItems = [
-    {
-      id: 1,
-      title: 'Mouse inalambrico logitech mx anywhere 3s ',
-      price: 99.95,
-      quantity: 1
-    },
-    {
-      id: 2,
-      title: 'Mouse inalambrico logitech pro x superlight 2',
-      price: 159.95,
-      quantity: 1
-    },
-    {
-      id: 3,
-      title: 'Mouse inalambrico logitech semipro x superlight 2',
-      price: 100.95,
-      quantity: 1
-    },
-    {
-      id: 4,
-      title: 'Mouse inalambrico bluetooth logitech signature m650',
-      price: 39.95,
-      quantity: 1
-    }
-  ];
+  const cartItems = useSelector((state: any) => state.cartItems);
+  const dispatch = useDispatch();
+
+  const removeItems = (item: CartItemsProps) => {
+    dispatch(removeItem(item));
+  };
 
   return (
     <div className="pb-12">
       <h1 className="cart-page">My Cart</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-4">
-          {cartItems.map((item) => (
-            <CarItem
-              id={item.id}
-              title={item.title}
-              price={item.price}
-              quantity={item.quantity}
-              key={item.id}
-            />
-          ))}
+          {cartItems.length > 0 ? (
+            cartItems.map((item: CartItemsProps) => (
+              <CarItem
+                id={item.id}
+                title={item.title}
+                price={item.price}
+                quantity={item.quantity}
+                key={item.id}
+                handleDelete={() => removeItems(item)}
+              />
+            ))
+          ) : (
+            <div className="cart-items text-center text-lg text-blue-950 h-40">
+              <p className="pt-8">Your Shopping Cart Is</p>
+              <h1 className="font-bold text-orange-500 text-xl">EMPTY</h1>
+            </div>
+          )}
         </div>
 
         <div className="p-4 border rounded-md bg-slate-50 text-gray-700 cart-items">
           <h2 className="text-lg font-semibold mb-4">Summary</h2>
-          {cartItems.map((item) => (
+          {cartItems.map((item: CartItemsProps) => (
             <div key={item.id} className="flex justify-between mb-2">
               <div>
                 {item.title} ({item.quantity})
@@ -58,7 +50,11 @@ const ShoppingCart = () => {
             <div className="text-gray-900 text-lg">
               $
               {cartItems
-                .reduce((acc, item) => acc + item.price * 1, 0)
+                .reduce(
+                  (acc: number, item: CartItemsProps) =>
+                    acc + item.price * item.quantity,
+                  0
+                )
                 .toFixed(2)}
             </div>
           </div>

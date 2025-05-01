@@ -1,5 +1,5 @@
 import './App.css';
-import { Products, MenuBar } from './components';
+import { Products } from './components';
 
 function App() {
   return <Products />;

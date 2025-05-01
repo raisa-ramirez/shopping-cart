@@ -1,6 +1,6 @@
 import { ProductProps } from '../interface';
 
-const Card = ({ id, title, price }: ProductProps) => (
+const Card = ({ id, title, price, handleAdd }: ProductProps) => (
   <div className="product-card h-full">
     <img
       src={'/product.png'}
@@ -12,7 +12,9 @@ const Card = ({ id, title, price }: ProductProps) => (
       <span className="text-gray-800">$ </span>
       {price}
     </p>
-    <div className="product-button">Add to cart</div>
+    <button className="product-button" onClick={() => handleAdd()}>
+      Add to cart
+    </button>
   </div>
 );
 export default Card;
