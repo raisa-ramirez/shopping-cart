@@ -7,15 +7,15 @@
 }
 
 .product-card {
-    @apply bg-yellow-300 rounded-xl border-yellow-700 border-2 hover:bg-yellow-400;
+    @apply bg-yellow-300 rounded-xl flex flex-col h-full justify-between border-yellow-700 border-2 hover:bg-yellow-400;
 }
 
 .product-title {
-    @apply font-semibold text-center text-base pb-3 mr-3 ml-3;
+    @apply font-semibold text-center text-base mr-3 ml-3;
 }
 
 .product-price {
-    @apply text-center text-xl font-bold;
+    @apply text-center text-xl font-bold mb-4;
 }
 
 .product-image {
@@ -23,7 +23,7 @@
 }
 
 .product-button {
-    @apply bg-gray-800 text-white h-14 rounded-b-xl text-center p-4 mt-4 cursor-pointer hover:bg-gray-900;
+    @apply bg-gray-800 w-full text-white rounded-b-xl text-center p-4 cursor-pointer hover:bg-gray-900;
 }
 
 .menu-bar {
@@ -60,6 +60,14 @@
 
 .cart-delete{
     @apply bg-red-600 h-2/4 p-5 rounded-2xl text-base text-center text-white cursor-pointer hover:bg-red-700 drop-shadow-md;
+}
+
+.cart-minus{
+    @apply bg-gray-600 h-2/4 p-5 ml-4 w-16 rounded-2xl text-base text-center text-white cursor-pointer hover:bg-gray-700 drop-shadow-md;
+}
+
+.cart-plus{
+    @apply bg-green-600 h-2/4 p-5 ml-4 w-16 rounded-2xl text-base text-center text-white cursor-pointer hover:bg-green-700 drop-shadow-md;
 }
 
 .cart-page {

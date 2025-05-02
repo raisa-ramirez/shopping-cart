@@ -1,46 +1,51 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { CartItemsProps } from "../interface";
 
-const cartItems : CartItemsProps[] = [
-    {
-      id: 1,
-      title: 'Mouse inalambrico logitech mx anywhere 3s ',
-      price: 99.95,
-      quantity: 1
-    },
-    {
-      id: 2,
-      title: 'Mouse inalambrico logitech pro x superlight 2',
-      price: 159.95,
-      quantity: 2
-    },
-  ];
+const cartItems : CartItemsProps[] = [];
 
 const cartSlice = createSlice({
     name: 'cartSlice',
     initialState: cartItems,
     reducers: {
-        addItem : (state, action) => {
-            console.log(action)
-        },
-        removeItem: (state, action) => {
-            if(action.payload.quantity>1){
+        addItem: (state, action) => {
+            let updatedId = action.payload.id
+            let searchId = state.find(({id}) => id === updatedId)
+            if(searchId){
                 return state.map((item) => {
-                    if(item.id === action.payload.id){
+                    if(item.id === updatedId ){
                         return {
                             ...item,
-                            quantity: item.quantity -1
+                            quantity: item.quantity + 1
                         }
                     }
                     return item
                 })
             } else {
-                return state.filter((item) => item.id !== action.payload.id)
+                state.push(action.payload)
             }
+        },
+        removeItem: (state, action) => {
+            let removedId = action.payload.id
+            if(action.payload.quantity>1){
+                return state.map((item) => {
+                    if(item.id === removedId){
+                        return {
+                            ...item,
+                            quantity: item.quantity - 1
+                        }
+                    }
+                    return item
+                })
+            } else {
+                return state.filter((item) => item.id !== removedId)
+            }
+        },
+        removeAll: (state, action) => {
+            return state.filter((item) => item.id !== action.payload.id)
         }
     }
 })
 
 
-export const { addItem, removeItem } = cartSlice.actions
+export const { addItem, removeItem, removeAll } = cartSlice.actions
 export default cartSlice.reducer

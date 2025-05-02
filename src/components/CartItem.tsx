@@ -5,7 +5,9 @@ const CartItem = ({
   title,
   price,
   quantity,
-  handleDelete
+  handleDelete,
+  handleAddItem,
+  handleRemoveItem
 }: CartItemsProps) => (
   <div className="grid grid-cols-6 cart-items">
     <div>
@@ -25,6 +27,12 @@ const CartItem = ({
         </div>
         <button className="cart-delete" onClick={() => handleDelete()}>
           Eliminar
+        </button>
+        <button className="cart-minus" onClick={() => handleRemoveItem()}>
+          -
+        </button>
+        <button className="cart-plus" onClick={() => handleAddItem()}>
+          +
         </button>
       </div>
     </div>

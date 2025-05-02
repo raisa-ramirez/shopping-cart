@@ -1,5 +1,3 @@
-import { ReactEventHandler } from "react";
-
 export interface ProductProps {
     id: number;
     title: string;
@@ -13,4 +11,6 @@ export interface CartItemsProps {
     price: number;
     quantity: number;
     handleDelete?: any;
+    handleAddItem?: any;
+    handleRemoveItem?:any;
 }

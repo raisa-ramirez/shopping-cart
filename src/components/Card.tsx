@@ -1,7 +1,7 @@
 import { ProductProps } from '../interface';
 
 const Card = ({ id, title, price, handleAdd }: ProductProps) => (
-  <div className="product-card h-full">
+  <div className="product-card">
     <img
       src={'/product.png'}
       alt={`Product ${id}`}

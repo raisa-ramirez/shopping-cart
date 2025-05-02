@@ -1,12 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux';
 import CarItem from './CartItem';
 import { CartItemsProps } from '../interface';
-import { removeItem } from '../redux/cartSlice';
+import { removeAll, addItem, removeItem } from '../redux/cartSlice';
 
 const ShoppingCart = () => {
   const cartItems = useSelector((state: any) => state.cartItems);
   const dispatch = useDispatch();
-
+  const deleteAll = (item: CartItemsProps) => {
+    dispatch(removeAll(item));
+  };
+  const addItems = (item: CartItemsProps) => {
+    dispatch(addItem(item));
+  };
   const removeItems = (item: CartItemsProps) => {
     dispatch(removeItem(item));
   };
@@ -24,7 +29,9 @@ const ShoppingCart = () => {
                 price={item.price}
                 quantity={item.quantity}
                 key={item.id}
-                handleDelete={() => removeItems(item)}
+                handleDelete={() => deleteAll(item)}
+                handleAddItem={() => addItems(item)}
+                handleRemoveItem={() => removeItems(item)}
               />
             ))
           ) : (
