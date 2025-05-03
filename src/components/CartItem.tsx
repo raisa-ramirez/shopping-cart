@@ -5,13 +5,14 @@ const CartItem = ({
   title,
   price,
   quantity,
+  image,
   handleDelete,
   handleAddItem,
   handleRemoveItem
 }: CartItemsProps) => (
   <div className="grid grid-cols-6 cart-items">
     <div>
-      <img src="/product.png" alt="Product" className="cart-image" />
+      <img src={image} alt="Product" className="cart-image" />
     </div>
 
     <div className="col-span-5 grid grid-cols-1 md:grid-cols-2">

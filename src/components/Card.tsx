@@ -1,9 +1,9 @@
 import { ProductProps } from '../interface';
 
-const Card = ({ id, title, price, handleAdd }: ProductProps) => (
+const Card = ({ id, title, price, image, handleAdd }: ProductProps) => (
   <div className="product-card">
     <img
-      src={'/product.png'}
+      src={image}
       alt={`Product ${id}`}
       className="object-contain mx-auto pb-6 drop-shadow-md product-image"
     />

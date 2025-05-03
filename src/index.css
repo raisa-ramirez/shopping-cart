@@ -73,3 +73,24 @@
 .cart-page {
     @apply pb-5 text-2xl font-medium text-black;
 }
+
+.Toastify__toast {
+    @apply bg-gray-800 border border-yellow-500;
+
+}
+
+.Toastify__progress-bar {
+    @apply bg-yellow-500;
+}
+
+.filter-text {
+    @apply text-blue-950 font-semibold text-lg mb-3;
+}
+
+.filter-select {
+    @apply w-full border text-blue-950 bg-yellow-50 border-yellow-500 p-4 rounded-lg mb-6;
+}
+
+.filter-select option {
+    @apply text-blue-950 bg-yellow-50;
+}

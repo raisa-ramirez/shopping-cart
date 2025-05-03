@@ -28,6 +28,7 @@ const ShoppingCart = () => {
                 title={item.title}
                 price={item.price}
                 quantity={item.quantity}
+                image={item.image}
                 key={item.id}
                 handleDelete={() => deleteAll(item)}
                 handleAddItem={() => addItems(item)}

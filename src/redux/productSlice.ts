@@ -1,53 +1,44 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { ProductProps } from "../interface";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { ProductProps, ProductState } from "../interface";
+import { showProducts } from "../services";
 
-const products : ProductProps[]= [
-    {
-      id: 1,
-      title: 'Mouse inalambrico logitech mx anywhere 3s ',
-      price: 99.95
-    },
-    {
-      id: 2,
-      title: 'Mouse inalambrico logitech pro x superlight 2',
-      price: 159.95
-    },
-    {
-      id: 3,
-      title: 'Mouse inalambrico logitech semipro x superlight 2',
-      price: 100.95
-    },
-    {
-      id: 4,
-      title: 'Mouse inalambrico bluetooth logitech signature m650',
-      price: 39.95
-    },
-    {
-      id: 5,
-      title: 'Mouse inalambrico bluetooth logitech signature m650',
-      price: 39.95
-    },
-    {
-      id: 6,
-      title: 'Mouse inalambrico bluetooth logitech signature m650',
-      price: 39.95
-    },
-    {
-      id: 7,
-      title: 'Mouse inalambrico bluetooth logitech signature m650',
-      price: 39.95
-    }
-];
+const fetchProducts = createAsyncThunk<ProductProps[]>('products/fetchProducts', () => showProducts())
+
+const initialState: ProductState = {
+  loading: false,
+  products: [],
+  error: ''
+}
 
 const productSlice = createSlice({
     name: 'productSlice',
-    initialState: products,
+    initialState: initialState,
     reducers: {
-      orderByPrice: (state) => {
-        state.sort((a:ProductProps, b:ProductProps) => (a.price < b.price) ? 1 : ((a.price > b.price) ? -1 : 0))
+      orderByPrice: (state, action) => {
+        if(action.payload.order === 'asc'){
+          state.products.sort((a, b) => a.price - b.price);
+        } else if(action.payload.order ==='desc') {
+          state.products.sort((a, b) => b.price - a.price);
+        }
       }
+    },
+    extraReducers: (builder) => {
+      builder.addCase(fetchProducts.pending, (state) => {
+        state.loading = true
+      })
+      builder.addCase(fetchProducts.fulfilled, (state, action) => {
+        state.loading = false
+        state.products = action.payload
+        state.error = ''
+      })
+      builder.addCase(fetchProducts.rejected, (state, action) => {
+        state.loading = false
+        state.products = []
+        state.error = action.error.message
+      })
     }
 })
 
-export const {orderByPrice} = productSlice.actions
+export { fetchProducts }
+export const { orderByPrice } = productSlice.actions
 export default productSlice.reducer;
