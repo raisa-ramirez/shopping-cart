@@ -31,15 +31,15 @@ const Products = () => {
 
   return (
     <>
-      <p className="filter-text">Order by:</p>
       <select
         className="filter-select"
         onChange={(evt) => handleFilter(evt.target.value)}
       >
-        <option value="asc">Lowest to highest price</option>
         <option value="desc">Highest to lowest price</option>
+        <option value="asc">Lowest to highest price</option>
       </select>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-8 mb-8">
         {products.products.map((product: ProductProps) => (
           <Card
             key={product.id}

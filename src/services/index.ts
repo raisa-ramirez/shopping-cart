@@ -1,14 +1,14 @@
 import { ProductProps } from "../interface"
 import { notify } from "../utils/alerts"
 
-const url = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_Drink'
+const url = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Punch / Party Drink'
 
 const showProducts = async () => {
     try {
         let data = await fetch(url)
         let products = await data.json()
         let response: ProductProps[] = []
-        for (let index = 10; index < 30; index++) {
+        for (let index = 10; index < 34; index++) {
             response.push({
                 id: products.drinks[index].idDrink,
                 title: products.drinks[index].strDrink,

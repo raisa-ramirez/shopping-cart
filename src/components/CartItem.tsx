@@ -19,6 +19,7 @@ const CartItem = ({
       <div>
         <h3 className="cart-title">{title}</h3>
         <h4 className="cart-subtitle">${price.toFixed(2)}</h4>
+        <h4 className="cart-subtitle">x</h4>
         <h4 className="cart-subtitle">{quantity} item(s)</h4>
       </div>
 
@@ -26,15 +27,21 @@ const CartItem = ({
         <div className="cart-price">
           <p>${(price * quantity).toFixed(2)}</p>
         </div>
-        <button className="cart-delete" onClick={() => handleDelete()}>
-          Eliminar
-        </button>
-        <button className="cart-minus" onClick={() => handleRemoveItem()}>
-          -
-        </button>
-        <button className="cart-plus" onClick={() => handleAddItem()}>
-          +
-        </button>
+        <div className="grid grid-cols-1 lg:grid-cols-2">
+          <div className="mb-2 m-2">
+            <button className="cart-delete" onClick={() => handleDelete()}>
+              Eliminar
+            </button>
+          </div>
+          <div className="flex justify-center gap-2 m-2">
+            <button className="cart-minus" onClick={() => handleRemoveItem()}>
+              -
+            </button>
+            <button className="cart-plus" onClick={() => handleAddItem()}>
+              +
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -55,19 +55,19 @@
 }
 
 .cart-price {
-    @apply text-2xl text-center p-4 h-2/4;
+    @apply text-2xl text-center p-2 md:p-4 ;
 }
 
 .cart-delete{
-    @apply bg-red-600 h-2/4 p-5 rounded-2xl text-base text-center text-white cursor-pointer hover:bg-red-700 drop-shadow-md;
+    @apply bg-red-600 w-full p-2 md:p-3 rounded-2xl text-[10px] md:text-[13px] text-base text-center text-white cursor-pointer hover:bg-red-700 drop-shadow-md;
 }
 
 .cart-minus{
-    @apply bg-gray-600 h-2/4 p-5 ml-4 w-16 rounded-2xl text-base text-center text-white cursor-pointer hover:bg-gray-700 drop-shadow-md;
+    @apply bg-gray-600 p-2 md:p-3 w-12 md:w-16 rounded-2xl text-base text-center text-white cursor-pointer hover:bg-gray-700 drop-shadow-md;
 }
 
 .cart-plus{
-    @apply bg-green-600 h-2/4 p-5 ml-4 w-16 rounded-2xl text-base text-center text-white cursor-pointer hover:bg-green-700 drop-shadow-md;
+    @apply bg-green-600 p-2 md:p-3 w-12 md:w-16 rounded-2xl text-base text-center text-white cursor-pointer hover:bg-green-700 drop-shadow-md;
 }
 
 .cart-page {
@@ -76,7 +76,6 @@
 
 .Toastify__toast {
     @apply bg-gray-800 border border-yellow-500;
-
 }
 
 .Toastify__progress-bar {
