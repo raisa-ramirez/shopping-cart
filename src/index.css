@@ -93,3 +93,11 @@
 .filter-select option {
     @apply text-blue-950 bg-yellow-50;
 }
+
+.loader-container {
+    @apply flex items-center justify-center min-h-[500px];
+}
+
+.loader {
+    @apply w-28 h-16 sm:w-44 sm:h-32 md:w-52 md:h-40;
+}

@@ -1,13 +1,16 @@
+import reportWebVitals from './reportWebVitals';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 import './index.css';
-import { MenuBar, ShoppingCart } from './components';
+import { MenuBar, Loader } from './components';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import { ToastContainer } from 'react-toastify';
+
+const LadyShoppingCart = React.lazy(() => import('./components/ShoppingCart'));
+
+const LazyApp = React.lazy(() => import('./App'));
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -20,8 +23,22 @@ root.render(
         <MenuBar />
         <div className="main-content">
           <Routes>
-            <Route path="/" element={<App />}></Route>
-            <Route path="/car" element={<ShoppingCart />}></Route>
+            <Route
+              path="/"
+              element={
+                <React.Suspense fallback={<Loader />}>
+                  <LazyApp />
+                </React.Suspense>
+              }
+            ></Route>
+            <Route
+              path="/car"
+              element={
+                <React.Suspense fallback={<Loader />}>
+                  <LadyShoppingCart />
+                </React.Suspense>
+              }
+            ></Route>
           </Routes>
         </div>
       </BrowserRouter>
