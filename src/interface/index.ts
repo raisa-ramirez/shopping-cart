@@ -26,7 +26,6 @@ export interface AlertProps {
 }
 
 export interface ProductState {
-    loading: boolean;
+    filter: string;
     products: ProductProps[];
-    error: string | undefined;
 }

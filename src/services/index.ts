@@ -24,7 +24,13 @@ const showProducts = async () => {
     return []
 }
 
+const filterOptions = [
+    { value: 'desc', text: 'Highest to lowest price' },
+    { value: 'asc', text: 'Lowest to highest price' }
+]
+
 
 export {
-    showProducts
+    showProducts,
+    filterOptions
 }

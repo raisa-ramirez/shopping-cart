@@ -1,44 +1,29 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { ProductProps, ProductState } from "../interface";
-import { showProducts } from "../services";
+import { createSlice } from "@reduxjs/toolkit";
+import { ProductState } from "../interface";
 
-const fetchProducts = createAsyncThunk<ProductProps[]>('products/fetchProducts', () => showProducts())
 
 const initialState: ProductState = {
-  loading: false,
-  products: [],
-  error: ''
+  filter: 'desc',
+  products: []
 }
 
 const productSlice = createSlice({
     name: 'productSlice',
     initialState: initialState,
     reducers: {
+      setProducts: (state, action) => {
+        state.products = action.payload
+      },
       orderByPrice: (state, action) => {
+        state.filter = action.payload.order
         if(action.payload.order === 'asc'){
           state.products.sort((a, b) => a.price - b.price);
         } else if(action.payload.order ==='desc') {
           state.products.sort((a, b) => b.price - a.price);
         }
       }
-    },
-    extraReducers: (builder) => {
-      builder.addCase(fetchProducts.pending, (state) => {
-        state.loading = true
-      })
-      builder.addCase(fetchProducts.fulfilled, (state, action) => {
-        state.loading = false
-        state.products = action.payload
-        state.error = ''
-      })
-      builder.addCase(fetchProducts.rejected, (state, action) => {
-        state.loading = false
-        state.products = []
-        state.error = action.error.message
-      })
     }
 })
 
-export { fetchProducts }
-export const { orderByPrice } = productSlice.actions
+export const { setProducts, orderByPrice } = productSlice.actions
 export default productSlice.reducer;
